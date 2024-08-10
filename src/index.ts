@@ -7,6 +7,15 @@ app.use(cors());
 
 app.use(express.json());
 
+const AuthMiddleware = (req: Request, res: Response, next: NextFunction)=>{
+  if(req.body.role && req.body.role === "admin"){
+    console.log("welcome")
+    next();
+  }else{
+    res.status(401).send("Unauthorized");
+  }
+}
+
 
 // middleware
 // const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
@@ -21,7 +30,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello world");
 });
 
-app.post("/users", (req:Request, res: Response)=>{
+app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
   console.log(req.body);
   res.send("hello world");
 })
