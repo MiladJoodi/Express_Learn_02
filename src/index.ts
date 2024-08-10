@@ -1,15 +1,20 @@
 import express, { Request, Response, NextFunction } from "express";
-// const express = require('express');
-
+import cors from "cors";
 const app = express();
 
-// middleware
-// const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
-//   console.log("time: ", Date.now());
-//   next();
-// };
+app.use(cors());
 
-// app.use(myMiddleware);
+
+// cors
+
+
+// middleware
+const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  console.log("time: ", Date.now());
+  next();
+};
+
+app.use(myMiddleware);
 
 app.get("/", (req: Request, res: Response) => {
   console.log(req.body);
