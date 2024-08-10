@@ -1,22 +1,20 @@
-import { NextFunction, Request, Response } from "express";
-const express = require('express');
+import express, { Request, Response, NextFunction } from "express";
+// const express = require('express');
+
 const app = express();
 
-
 // middleware
-const myMiddleware = ((req: Request,res:Response, next: NextFunction)=>{
-    console.log("time: ", Date.now());
-    next();
-})
+const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  console.log("time: ", Date.now());
+  next();
+};
 
+app.use(myMiddleware);
 
-
-app.get("/", (req: Request, res:Response)=>{
-    console.log(req.body)
-    res.send("Hello world")
-})
-
-
+app.get("/", (req: Request, res: Response) => {
+  console.log(req.body);
+  res.send("Hello world");
+});
 
 // app.get("/users", (req, res)=>{
 //     const users = [
@@ -28,6 +26,4 @@ app.get("/", (req: Request, res:Response)=>{
 
 // })
 
-app.listen(3000, ()=>(
-    console.log("Server is running on port 3000")
-))
+app.listen(3000, () => console.log("Server is running on port 3000"));
