@@ -9,17 +9,22 @@ app.use(cors());
 
 
 // middleware
-const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  console.log("time: ", Date.now());
-  next();
-};
+// const myMiddleware = (req: Request, res: Response, next: NextFunction) => {
+//   console.log("time: ", Date.now());
+//   next();
+// };
 
-app.use(myMiddleware);
+// app.use(myMiddleware);
 
 app.get("/", (req: Request, res: Response) => {
   console.log(req.body);
   res.send("Hello world");
 });
+
+app.post("/users", (req:Request, res: Response)=>{
+  console.log(req.body);
+  res.send("hello world");
+})
 
 // app.get("/users", (req, res)=>{
 //     const users = [
