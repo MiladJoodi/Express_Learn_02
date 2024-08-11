@@ -30,24 +30,24 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Hello world");
 });
 
-app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
+app.get("/users",AuthMiddleware, (req:Request, res: Response)=>{
   console.log(req.body);
-  res.send("hello world");
+  res.send(req.body.name);
 })
 
 app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
   console.log(req.body);
-  res.send("hello world");
+  res.send(req.body.name);
 })
 
-app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
+app.put("/users",AuthMiddleware, (req:Request, res: Response)=>{
   console.log(req.body);
-  res.send("hello world");
+  res.send(req.body.name);
 })
 
-app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
+app.patch("/users",AuthMiddleware, (req:Request, res: Response)=>{
   console.log(req.body);
-  res.send("hello world");
+  res.send(req.body.name);
 })
 
 // app.get("/users", (req, res)=>{
