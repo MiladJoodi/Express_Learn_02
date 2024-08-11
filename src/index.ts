@@ -1,20 +1,14 @@
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
+import usersControllers from "./users/usersControllers";
+
+
 const app = express();
 
 // cors
 app.use(cors());
-
 app.use(express.json());
 
-const AuthMiddleware = (req: Request, res: Response, next: NextFunction)=>{
-  if(req.body.role && req.body.role === "admin"){
-    console.log("welcome")
-    next();
-  }else{
-    res.status(401).send("Unauthorized");
-  }
-}
 
 
 // middleware
@@ -26,29 +20,12 @@ const AuthMiddleware = (req: Request, res: Response, next: NextFunction)=>{
 // app.use(myMiddleware);
 
 app.get("/", (req: Request, res: Response) => {
-  console.log(req.body);
   res.send("Hello world");
 });
 
-app.get("/users",AuthMiddleware, (req:Request, res: Response)=>{
-  console.log(req.body);
-  res.send(req.body.name);
-})
+app.use("/users", usersControllers)
 
-app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
-  console.log(req.body);
-  res.send(req.body.name);
-})
 
-app.put("/users",AuthMiddleware, (req:Request, res: Response)=>{
-  console.log(req.body);
-  res.send(req.body.name);
-})
-
-app.patch("/users",AuthMiddleware, (req:Request, res: Response)=>{
-  console.log(req.body);
-  res.send(req.body.name);
-})
 
 // app.get("/users", (req, res)=>{
 //     const users = [
