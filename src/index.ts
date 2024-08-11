@@ -35,6 +35,21 @@ app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
   res.send("hello world");
 })
 
+app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
+  console.log(req.body);
+  res.send("hello world");
+})
+
+app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
+  console.log(req.body);
+  res.send("hello world");
+})
+
+app.post("/users",AuthMiddleware, (req:Request, res: Response)=>{
+  console.log(req.body);
+  res.send("hello world");
+})
+
 // app.get("/users", (req, res)=>{
 //     const users = [
 //         {name: "john", age: 20},
